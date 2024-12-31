@@ -1,0 +1,17 @@
+Funkcje
+
+a. Protokół routingu
+BGP (Border Gateway Protocol): Używany do wymiany informacji routingowych między różnymi systemami autonomicznymi.
+OSPF (Open Shortest Path First): Protokół routingu używany w sieciach wewnętrznych (LAN).
+
+b. Protokół komunikacji
+HTTP/HTTPS: Protokół używany do przesyłania dokumentów hipertekstowych.
+WebSocket: Protokół komunikacji dwukierunkowej używany w aplikacjach internetowych.
+
+c. Protokół bezpieczeństwa
+IPsec (Internet Protocol Security): Zestaw protokołów zapewniających bezpieczną komunikację w sieci IP.
+SSH (Secure Shell): Protokół do bezpiecznego zarządzania sieciami i urządzeniami sieciowymi.
+
+d. Protokół przesyłania plików
+FTP/SFTP (Secure File Transfer Protocol): Protokoły używane do przesyłania plików z/do serwera.
+TFTP (Trivial File Transfer Protocol): Uproszczony protokół do przesyłania plików, często używany w urządzeniach sieciowych.

@@ -1,0 +1,8 @@
+Topologia sieci
+a. Protokół sieci lokalnych (LAN)
+Ethernet: Standard sieci lokalnych.
+Wi-Fi: Protokół bezprzewodowej sieci LAN.
+b. Protokół sieci rozległych (WAN)
+MPLS (Multiprotocol Label Switching): Protokół używany w sieciach rozległych do zarządzania przepływem danych.
+c. Protokół sieci osobistych (PAN)
+Bluetooth: Protokół do komunikacji krótkiego zasięgu między urządzeniami.

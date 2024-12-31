@@ -1,0 +1,33 @@
+Protokół  | Numer portu  | Zastosowanie                                                                  | Przykładowe programy
+----------|--------------|-------------------------------------------------------------------------------|--------------------------------------
+HTTP      | 80           | Przesyłanie stron internetowych                                               | Przeglądarki internetowe (Chrome, Firefox, Safari)
+HTTPS     | 443          | Bezpieczne przesyłanie stron internetowych                                    | Przeglądarki internetowe (Chrome, Firefox, Safari)
+FTP       | 21           | Transfer plików między serwerami                                              | FileZilla, WinSCP, Cyberduck
+FTPS      | 990          | Bezpieczny transfer plików (FTP over SSL/TLS)                                  | FileZilla, WinSCP, Cyberduck
+SFTP      | 22           | Bezpieczny transfer plików (SSH File Transfer Protocol)                        | FileZilla, WinSCP, Cyberduck
+SMTP      | 25, 587, 465 | Wysyłanie e-maili                                                             | Microsoft Outlook, Mozilla Thunderbird, Gmail
+IMAP      | 143, 993     | Odbieranie e-maili (Internet Message Access Protocol)                          | Microsoft Outlook, Mozilla Thunderbird, Apple Mail
+POP3      | 110, 995     | Odbieranie e-maili (Post Office Protocol)                                      | Microsoft Outlook, Mozilla Thunderbird, Apple Mail
+DNS       | 53           | Przekształcanie nazw domen na adresy IP                                        | Unbound, BIND, dnsmasq
+DHCP      | 67, 68       | Dynamiczne przydzielanie adresów IP                                            | Serwery DHCP (ISC DHCP, dnsmasq)
+Telnet    | 23           | Niezabezpieczony dostęp do zdalnych urządzeń                                   | PuTTY, telnet (wbudowany w systemy UNIX)
+SSH       | 22           | Bezpieczny dostęp do zdalnych urządzeń                                         | PuTTY, OpenSSH, WinSCP
+LDAP      | 389, 636     | Usługi katalogowe                                                             | OpenLDAP, Apache Directory Studio
+RDP       | 3389         | Zdalny pulpit dla systemów Windows                                             | Microsoft Remote Desktop, AnyDesk
+VNC       | 5900         | Zdalny pulpit (Virtual Network Computing)                                      | RealVNC, TightVNC, UltraVNC
+SNMP      | 161, 162     | Monitorowanie i zarządzanie urządzeniami sieciowymi                            | Nagios, Zabbix, SolarWinds
+TFTP      | 69           | Prosty transfer plików, często używany w urządzeniach sieciowych               | tftp-hpa, PumpKIN
+NTP       | 123          | Synchronizacja czasu                                                          | ntpd, chrony
+SIP       | 5060, 5061   | Protokół inicjacji sesji, używany w VoIP                                       | Asterisk, 3CX, Ekiga
+MQTT      | 1883, 8883   | Protokół komunikacji w IoT (Message Queuing Telemetry Transport)               | Mosquitto, HiveMQ
+CoAP      | 5683         | Protokół komunikacji w IoT (Constrained Application Protocol)                  | libcoap, aiocoap
+IRC       | 6667         | Komunikacja tekstowa w czasie rzeczywistym (Internet Relay Chat)               | HexChat, mIRC, Irssi
+XMPP      | 5222, 5223   | Protokół wiadomości błyskawicznych (Extensible Messaging and Presence Protocol)| Jabber, Pidgin, Gajim
+BGP       | 179          | Protokół routingu między systemami autonomicznymi                              | BIRD, OpenBGPD, Quagga
+SMB/CIFS  | 445          | Udostępnianie plików i drukarek w sieci                                        | Samba, Windows File Sharing
+NNTP      | 119          | Protokół grup dyskusyjnych (Network News Transfer Protocol)                    | tin, Pan, Thunderbird
+NFS       | 2049         | Sieciowy system plików (Network File System)                                   | nfs-utils, FreeNAS
+RADIUS    | 1812, 1813   | Autoryzacja, autentykacja i zarządzanie kontami użytkowników                   | FreeRADIUS, Cisco ACS
+Kerberos  | 88           | Protokół uwierzytelniania w sieciach komputerowych                             | MIT Kerberos, Heimdal
+Syslog    | 514          | Przesyłanie logów z urządzeń sieciowych                                        | rsyslog, syslog-ng
+

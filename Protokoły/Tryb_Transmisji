@@ -1,0 +1,5 @@
+Tryb transmisji
+a. Protokół bezpołączeniowy
+UDP: Protokół, w którym nie ustanawia się połączenia przed wysłaniem danych.
+b. Protokół połączeniowy
+TCP: Protokół, w którym przed przesłaniem danych nawiązuje się połączenie między nadawcą a odbiorcą.
