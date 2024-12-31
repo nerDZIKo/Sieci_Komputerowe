@@ -1,0 +1,119 @@
+Oto kilka najczęstszych problemów w sieciach komputerowych, które mogą prowadzić do zastoju lub przestoju, wraz z rozwiązaniami i przykładami skryptów pomocniczych, które mogą być używane przez zespół helpdesk:
+
+### 1. Problemy z połączeniem sieciowym
+
+#### Sytuacja:
+Użytkownicy zgłaszają brak połączenia z siecią lub internetem.
+
+#### Rozwiązania:
+- **Sprawdzenie kabli**: Upewnij się, że wszystkie kable sieciowe są prawidłowo podłączone.
+- **Restart routera/modemu**: Często restart urządzenia sieciowego może rozwiązać problem.
+- **Sprawdzenie adresu IP**: Upewnij się, że urządzenie otrzymuje prawidłowy adres IP.
+
+#### Skrypt pomocniczy (Windows):
+```batch
+@echo off
+echo Sprawdzanie polaczenia sieciowego...
+ipconfig /release
+ipconfig /renew
+ipconfig /flushdns
+echo Polaczenie sieciowe zresetowane. Sprawdz ponownie polaczenie.
+pause
+```
+
+### 2. Problemy z DNS
+
+#### Sytuacja:
+Strony internetowe nie ładują się, ale pingowanie adresów IP działa.
+
+#### Rozwiązania:
+- **Sprawdzenie ustawień DNS**: Upewnij się, że używasz prawidłowych serwerów DNS.
+- **Zmiana serwera DNS**: Spróbuj zmienić serwery DNS na publiczne, takie jak Google (8.8.8.8, 8.8.4.4) lub Cloudflare (1.1.1.1).
+
+#### Skrypt pomocniczy (Windows):
+```batch
+@echo off
+echo Zmiana serwerow DNS na Google DNS...
+netsh interface ip set dns name="Wi-Fi" static 8.8.8.8
+netsh interface ip add dns name="Wi-Fi" 8.8.4.4 index=2
+echo Serwery DNS zostaly zmienione na Google DNS. Sprawdz polaczenie.
+pause
+```
+
+### 3. Problemy z Wi-Fi
+
+#### Sytuacja:
+Użytkownicy zgłaszają słabe połączenie Wi-Fi lub brak połączenia.
+
+#### Rozwiązania:
+- **Zmiana kanału Wi-Fi**: Spróbuj zmienić kanał Wi-Fi na mniej zatłoczony.
+- **Zaktualizowanie sterowników**: Upewnij się, że sterowniki karty sieciowej są aktualne.
+- **Przesunięcie routera**: Upewnij się, że router jest umieszczony w centralnym miejscu.
+
+#### Skrypt pomocniczy (Windows):
+```batch
+@echo off
+echo Restartowanie karty sieciowej Wi-Fi...
+netsh interface set interface "Wi-Fi" admin=disable
+timeout /t 5
+netsh interface set interface "Wi-Fi" admin=enable
+echo Karta sieciowa Wi-Fi zostala zrestartowana. Sprawdz polaczenie.
+pause
+```
+
+### 4. Problemy z serwerem DHCP
+
+#### Sytuacja:
+Urządzenia nie otrzymują adresów IP z serwera DHCP.
+
+#### Rozwiązania:
+- **Restart serwera DHCP**: Zrestartuj usługę DHCP na serwerze.
+- **Sprawdzenie zakresu adresów**: Upewnij się, że zakres adresów IP nie jest wyczerpany.
+- **Sprawdzenie konfliktów IP**: Upewnij się, że nie ma konfliktów adresów IP w sieci.
+
+#### Skrypt pomocniczy (Linux):
+```bash
+#!/bin/bash
+echo "Restartowanie usługi DHCP..."
+sudo systemctl restart isc-dhcp-server
+echo "Usługa DHCP została zrestartowana. Sprawdź połączenie."
+```
+
+### 5. Problemy z połączeniem VPN
+
+#### Sytuacja:
+Użytkownicy zgłaszają problemy z połączeniem do VPN.
+
+#### Rozwiązania:
+- **Sprawdzenie poświadczeń**: Upewnij się, że użytkownicy używają prawidłowych poświadczeń.
+- **Sprawdzenie ustawień VPN**: Upewnij się, że konfiguracja VPN jest prawidłowa.
+- **Restart usługi VPN**: Zrestartuj usługę VPN na serwerze.
+
+#### Skrypt pomocniczy (Windows):
+```batch
+@echo off
+echo Restartowanie polaczenia VPN...
+rasdial /disconnect
+rasdial "Nazwa VPN" username password
+echo Polaczenie VPN zostalo zrestartowane. Sprawdz polaczenie.
+pause
+```
+
+### 6. Problemy z wydajnością sieci
+
+#### Sytuacja:
+Użytkownicy zgłaszają wolne działanie sieci.
+
+#### Rozwiązania:
+- **Sprawdzenie obciążenia sieci**: Użyj narzędzi do monitorowania ruchu sieciowego.
+- **Zaktualizowanie oprogramowania**: Upewnij się, że routery, przełączniki i inne urządzenia sieciowe mają najnowsze oprogramowanie.
+- **QoS (Quality of Service)**: Skonfiguruj QoS, aby priorytetyzować ważny ruch.
+
+#### Skrypt pomocniczy (Linux):
+```bash
+#!/bin/bash
+echo "Sprawdzanie obciążenia sieci..."
+ifstat -t
+```
+
+Te przykłady obejmują kilka najczęstszych problemów w sieciach komputerowych i proponują praktyczne rozwiązania, które mogą być używane przez zespół helpdesk, aby szybko i skutecznie rozwiązywać te problemy.
