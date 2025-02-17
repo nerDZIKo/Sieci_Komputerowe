@@ -1,115 +1,134 @@
 import time
 import sys
 
-# Funkcja do stopniowego wypisywania tekstu
-def slow_print(text, delay=0.005):
+# Funkcja do szybkiego wypisywania tekstu
+def fast_print(text, delay=0.02):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
     print()
 
-# 1. Animacja rozgłaszania ramki (broadcast)
+# 1. Animacja rozgłaszania ramki (Broadcast)
 def animate_broadcast():
-    slow_print("📡 [Switch] Otrzymano ramkę! Sprawdzanie tabeli MAC...", 0.07)
-    time.sleep(1)
-    slow_print("🔎 Adres docelowy MAC: FF:FF:FF:FF:FF:FF (Broadcast)")
-    slow_print("📡 Wysyłanie do wszystkich portów oprócz wejściowego...")
-    time.sleep(1)
-    slow_print("✅ Ramka rozgłoszona!")
+    fast_print("📡 [Switch] Otrzymano ramkę! Sprawdzanie tabeli MAC...", 0.05)
+    fast_print("🔎 Adres docelowy MAC: FF:FF:FF:FF:FF:FF (Broadcast)")
+    fast_print("📡 Wysyłanie do wszystkich portów oprócz wejściowego...")
+    fast_print("✅ Ramka rozgłoszona!")
 
 # 2. Nauka MAC (MAC learning)
 def animate_mac_learning():
-    slow_print("🧐 [Switch] Analiza przychodzącej ramki...")
-    time.sleep(1)
-    slow_print("🔍 Źródłowy MAC: 00:1A:2B:3C:4D:5E na porcie 1")
-    slow_print("📋 Aktualizacja tabeli MAC...")
-    time.sleep(2)
-    slow_print("📊 Tabela MAC:\n+------+-------------------+\n| Port | MAC Address       |\n+------+-------------------+\n| 1    | 00:1A:2B:3C:4D:5E |\n+------+-------------------+")
+    fast_print("🧐 [Switch] Analiza przychodzącej ramki...")
+    fast_print("🔍 Źródłowy MAC: 00:1A:2B:3C:4D:5E na porcie 1")
+    fast_print("📋 Aktualizacja tabeli MAC...")
+    fast_print("📊 Nowa tabela MAC:\n| Port | MAC Address       |\n|------|-------------------|\n| 1    | 00:1A:2B:3C:4D:5E |")
 
 # 3. Forwarding ramki na odpowiedni port
 def animate_switch_forwarding():
-    slow_print("📡 Przełącznik sprawdza tabelę MAC...")
-    time.sleep(1)
-    slow_print("✅ MAC 3C:97:0E:67:89:AB znajduje się w tabeli na porcie 3!")
-    slow_print("🚀 Przekierowanie ramki na port 3!")
+    fast_print("📡 Sprawdzanie tabeli MAC...")
+    fast_print("✅ MAC 3C:97:0E:67:89:AB znajduje się na porcie 3!")
+    fast_print("🚀 Przekierowanie ramki na port 3!")
 
-# 4. Nieznany adres MAC
+# 4. Nieznany adres MAC - Flooding
 def animate_unknown_mac():
-    slow_print("❓ Adres MAC 3F:45:67:89:AB:CD nieznany w tabeli MAC.")
-    time.sleep(1)
-    slow_print("📡 Rozgłaszanie ramki do wszystkich portów (Flooding)!")
-    slow_print("✅ Wysłano do wszystkich aktywnych portów.")
+    fast_print("❓ Adres MAC nieznany w tabeli MAC.")
+    fast_print("📡 Rozgłaszanie ramki do wszystkich portów (Flooding)!")
+    fast_print("✅ Wysłano do wszystkich aktywnych portów.")
 
 # 5. Animacja enkapsulacji
 def animate_encapsulation():
-    slow_print("📦 Przygotowanie ramki Ethernet...", 0.07)
+    fast_print("📦 Tworzenie ramki Ethernet...")
     headers = [
-        "🔢 Dane użytkownika: HTTP GET Request",
-        "🔢 Nagłówek TCP: [SRC: 56789 | DST: 443] + Checksum",
-        "🌐 Nagłówek IP: [SRC: 192.168.1.10 | DST: 10.0.0.5] + TTL + Checksum",
-        "🔗 Nagłówek Ethernet: [SRC: 00:1A:2B:3C:4D:5E | DST: 3C:97:0E:67:89:AB]",
+        "🔢 Dane: HTTP Request",
+        "🔢 Nagłówek TCP: SRC 56789 | DST 443",
+        "🌐 Nagłówek IP: SRC 192.168.1.10 | DST 10.0.0.5",
+        "🔗 Nagłówek Ethernet: SRC 00:1A:2B:3C:4D:5E | DST 3C:97:0E:67:89:AB",
         "🔑 Dodawanie FCS (Frame Check Sequence)"
     ]
     for h in headers:
-        slow_print(h, 0.1)
-        time.sleep(1)
-    slow_print("🚀 Ramka gotowa do wysłania!")
+        fast_print(h, 0.05)
+    fast_print("🚀 Ramka gotowa do wysłania!")
 
-# 6. Quiz z animacjami i rozbudowanymi odpowiedziami
+# 6. Host odrzuca niepasującą ramkę unicast
+def animate_unicast_reject():
+    fast_print("📥 Host odbiera ramkę...")
+    fast_print("❌ MAC docelowy niezgodny! Ramka odrzucona.")
+
+# 7. Weryfikacja błędów (FCS)
+def animate_fcs_check():
+    fast_print("📡 Analiza ramki pod kątem błędów...")
+    fast_print("✅ Suma kontrolna FCS poprawna. Transmisja OK!")
+
+# 8. Forwarding przy pełnej tabeli MAC
+def animate_full_mac_forwarding():
+    fast_print("📊 Tabela MAC kompletna. Adres docelowy znany.")
+    fast_print("🚀 Przekazanie ramki do odpowiedniego portu.")
+
+# 9. Switch dynamicznie aktualizuje tabelę MAC
+def animate_mac_update():
+    fast_print("📡 Switch otrzymuje nową ramkę...")
+    fast_print("📋 Aktualizacja tabeli MAC...")
+    fast_print("✅ Nowy adres zapisany!")
+
+# 10. Ramka Unicast trafia do właściwego odbiorcy
+def animate_unicast_forwarding():
+    fast_print("📥 Ramka unicast odebrana.")
+    fast_print("✅ MAC docelowy zgodny! Dostarczenie poprawne.")
+
+# 11. Switch odbiera i przetwarza wiele ramek jednocześnie
+def animate_parallel_processing():
+    fast_print("⚡ Switch przetwarza wiele ramek równocześnie...")
+    fast_print("✅ Wszystkie pakiety przesłane poprawnie!")
+
+# Quiz
 def quiz():
     questions = [
         ("🔎 Co zrobi przełącznik, gdy nie zna docelowego adresu MAC?",
-         ["A: Wyrzuci ramkę, ponieważ nie wie, dokąd ją przesłać",
-          "B: Wykona operację floodingu – wyśle ramkę do wszystkich portów oprócz wejściowego, aby znaleźć właściwego odbiorcę"],
+         ["A: Wykona ARP request.",
+          "B: Rozgłosi ramkę do wszystkich portów.",
+          "C: Powiadomi hosta o błędzie.",
+          "D: Wyśle ramkę do konkretnego portu."],
          "B", animate_unknown_mac),
         
         ("⚡ Które urządzenie przekazuje dane na podstawie tabeli MAC?",
-         ["A: Hub – urządzenie warstwy 1, które po prostu powiela sygnał",
-          "B: Router – przekazuje dane w oparciu o adresy IP",
-          "C: Przełącznik – wykorzystuje tabelę MAC do przesyłania ramek do odpowiednich portów"],
+         ["A: Hub", "B: Router", "C: Switch", "D: Modem"],
          "C", animate_mac_learning),
         
-        ("📋 Jakie informacje są używane do budowy tabeli MAC?",
-         ["A: Przełącznik uczy się na podstawie docelowych adresów MAC w odbieranych ramkach",
-          "B: Przełącznik zapamiętuje źródłowe adresy MAC i kojarzy je z portem, na którym je odebrał"],
-         "B", animate_mac_learning),
+        ("📋 Jakie informacje zapisuje switch w tabeli MAC?",
+         ["A: Adres IP docelowy.", "B: Adres MAC źródłowy.", "C: Adres IP źródłowy.", "D: Adres MAC docelowy."],
+         "B", animate_mac_update),
         
-        ("🛡️ Jaki jest cel pola FCS?",
-         ["A: Umożliwia przełącznikowi sprawdzenie integralności ramki, wykrywając ewentualne błędy transmisji",
-          "B: Zawiera dodatkowe informacje o źródłowym adresie MAC"],
-         "A", animate_encapsulation),
+        ("🛡️ Co robi pole FCS?",
+         ["A: Pozyskuje adres MAC.", "B: Sprawdza błędy transmisji.", "C: Oblicza CRC.", "D: Kontroluje dostęp."],
+         "B", animate_fcs_check),
         
-        ("🚨 Co robi host, gdy MAC nie pasuje?",
-         ["A: Odrzuca ramkę, ponieważ nie jest jej adresatem",
-          "B: Wysyła ramkę do następnego urządzenia w sieci"],
-         "A", animate_broadcast),
-        
-        ("🔀 Jak działa przełącznik warstwy 2?",
-         ["A: Analizuje pakiety na podstawie adresów IP i wykorzystuje tablicę routingu",
-          "B: Analizuje ramki na podstawie adresów MAC i kieruje je do odpowiednich portów"],
-         "B", animate_switch_forwarding),
+        ("🔀 Jak działa switch warstwy 2?",
+         ["A: Przekazuje dane na podstawie adresu MAC.", "B: Duplikuje sygnał do każdego portu.", "C: Analizuje adresy IP.", "D: Zatrzymuje pakiety na warstwie 1."],
+         "A", animate_switch_forwarding),
         
         ("📦 Co to jest enkapsulacja?",
-         ["A: Proces dodawania nagłówków i stopki do danych w kolejnych warstwach modelu OSI",
-          "B: Proces dekodowania pakietów w celu ich przesłania"],
-         "A", animate_encapsulation),
+         ["A: Dekodowanie.", "B: Dodawanie nagłówków.", "C: Fragmentacja.", "D: Routing."],
+         "B", animate_encapsulation),
         
-        ("🤷 Co robi switch, gdy nie zna docelowego MAC?",
-         ["A: Kasuje ramkę, ponieważ nie ma odpowiedniego wpisu w tabeli MAC",
-          "B: Wysyła do wszystkich portów oprócz wejściowego, aby znaleźć prawidłowego odbiorcę"],
-         "B", animate_unknown_mac),
+        ("🔍 Jakie pola zawiera ramka Ethernet 802.3? (Wybierz trzy)",
+         ["A: Adres MAC źródłowy", "B: Adres IP źródłowy", "C: FCS", "D: Adres MAC docelowy"],
+         ["A", "C", "D"], animate_encapsulation),
         
-        ("🔍 Jakie pola ma ramka Ethernet?",
-         ["A: Źródłowy adres MAC – identyfikujący nadawcę",
-          "B: Pole FCS – służące do wykrywania błędów",
-          "C: Docelowy adres MAC – wskazujący odbiorcę"],
-         "ABC", animate_encapsulation),
+        ("📝 Co zrobi host, jeśli odbierze ramkę unicast z niepasującym MAC?",
+         ["A: Odrzuci ramkę.", "B: Przekieruje ją dalej.", "C: Usunie nagłówek Ethernet.", "D: Wykona ARP request."],
+         "A", animate_unicast_reject),
         
-        ("📝 Jak działa forwarding w switchu?",
-         ["A: Przełączniki uczą się, analizując źródłowe adresy MAC przychodzących ramek i aktualizując tabelę MAC",
-          "B: Ramki adresowane do nieznanych MAC są automatycznie usuwane"],
-         "A", animate_switch_forwarding)
+        ("📡 Jak switch podejmuje decyzje o przekazywaniu ramek?",
+         ["A: Na podstawie MAC.", "B: Na podstawie IP.", "C: Odrzuca nieznane MAC.", "D: Przekazuje wszystkie pakiety unicast."],
+         "A", animate_full_mac_forwarding),
+
+        ("📶 Co robi switch, gdy ma pełną tabelę MAC?",
+         ["A: Odrzuca nowe adresy.", "B: Nadal przetwarza pakiety.", "C: Wysyła ARP request.", "D: Restartuje się."],
+         "B", animate_full_mac_forwarding),
+
+        ("⚡ Jak switch przetwarza wiele ramek jednocześnie?",
+         ["A: Przetwarza je szeregowo.", "B: Używa buforowania.", "C: Blokuje nowe ramki.", "D: Odrzuca nadmiar ramek."],
+         "B", animate_parallel_processing)
     ]
     
     for question, options, correct_answer, animation in questions:
@@ -118,7 +137,7 @@ def quiz():
             print(option)
         
         answer = input("🔹 Wybierz odpowiedź: ").strip().upper()
-        if answer == correct_answer:
+        if answer == correct_answer or (isinstance(correct_answer, list) and sorted(answer) == sorted(correct_answer)):
             print("✅ Poprawna odpowiedź!")
         else:
             print(f"❌ Niepoprawna. Prawidłowa odpowiedź: {correct_answer}")
@@ -127,8 +146,5 @@ def quiz():
         print("\n" + "-" * 50)
 
 # Uruchomienie quizu
-def main():
-    quiz()
-    
 if __name__ == "__main__":
-    main()
+    quiz()
